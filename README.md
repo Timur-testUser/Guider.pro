@@ -139,19 +139,21 @@ SSH (Secure Shell) — это протокол прикладного уровн
   - сохранить файл в директории проекта 
   - запустить проект с помощью команды docker-compose up -d
 
-- Как можно изменить файл, чтобы добавить том для хранения данных PostgreSQL?     
- - version: '3'
- - services:
- - web:
- -   image: nginx:latest
- -   ports:
- -     - "8080:80"
- - db:
- -   image: postgres:latest
- -   environment:
- -     POSTGRES_USER: exampleuser
- -     POSTGRES_PASSWORD: examplepass
- -   volumes:
- -     - postgres-data:/var/lib/postgresql/data
- - volumes:
- - postgres-data:
+- Как можно изменить файл, чтобы добавить том для хранения данных PostgreSQL?    
+```bash 
+ version: '3'
+ services:
+  web:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: exampleuser
+      POSTGRES_PASSWORD: examplepass
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+ volumes:
+  postgres-data:
+```
